@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    silo list
+{% endblock %}
+
+{% block content %}
+    <h3>list of silos</h3>
+    {% for silo in object_list %}
+        <div>
+            <p>{{ silo.name }}</p>
+        </div>
+    {% endfor %}
+
+{% endblock %}
