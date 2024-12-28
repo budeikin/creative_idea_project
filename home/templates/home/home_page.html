@@ -6,11 +6,23 @@
 
 {% block content %}
     <div><h3>Home Page , Welcome</h3></div>
-    {% if user.role == 'Farmer' %}
+    {% if user.role == 'FA' %}
+        <p>hello {{ user.email }}({{ user.role }})</p>
         <a href="http://127.0.0.1:8000/order/api/create/">create new order</a>
-    {% else %}
         <div>
-            <h4>List Of All Orders</h4>
+            <p>my orders</p><br>
+            {% for order in user.orders.all %}
+                {{ order.grain_type }}
+                {{ order.quantity }}
+                {{ order.status }}
+                <br>
+            {% endfor %}
+
+        </div>
+    {% elif user.role == 'MA' %}
+        <div>
+            <p>hello {{ user.email }}({{ user.role }})</p>
+            <h4><a href="http://127.0.0.1:8000/order/api/all/1/">List Of All Orders</a></h4>
             <hr>
             {% for order in orders %}
                 {{ order.farmer }}

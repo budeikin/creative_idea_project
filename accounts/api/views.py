@@ -1,12 +1,13 @@
 from rest_framework import generics, status
-from .serializers import RegisterionSerializer
+from .serializers import RegisterionSerializer, UserSerializer
 from rest_framework.response import Response
 
+
 class RegisterView(generics.GenericAPIView):
-    serializer_class = RegisterionSerializer
+    serializer_class = UserSerializer
 
     def post(self, request, *args, **kwargs):
-        serializer = RegisterionSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             data = {
