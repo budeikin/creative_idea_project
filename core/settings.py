@@ -135,3 +135,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+LOGIN_SUCCESS_URL = '127.0.0.1:8000'

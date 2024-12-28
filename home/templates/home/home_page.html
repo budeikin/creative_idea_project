@@ -15,6 +15,8 @@
                 {{ order.grain_type }}
                 {{ order.quantity }}
                 {{ order.status }}
+                <a href="http://127.0.0.1:8000/order/api/my-orders/{{ order.id }}/" class="btn btn-warning">Edit</a>
+                <hr>
                 <br>
             {% endfor %}
 
@@ -25,8 +27,14 @@
             <h4><a href="http://127.0.0.1:8000/order/api/all/1/">List Of All Orders</a></h4>
             <hr>
             {% for order in orders %}
-                {{ order.farmer }}
-                {{ order.status }}
+                farmer : {{ order.farmer }} <br>
+                {% if order.status == 'PE' %}
+                    <p>status : pending</p>
+                {% elif order.status == 'AP' %}
+                    <p>status : approved</p>
+                {% endif %}
+                <a href="http://127.0.0.1:8000/order/api/all/{{ order.id }}/" class="btn btn-warning">Edit</a>
+                <hr>
                 <br>
             {% endfor %}
 

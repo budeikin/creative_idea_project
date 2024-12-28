@@ -17,6 +17,7 @@ class OrderCreateView(generics.GenericAPIView):
 
 class FarmerOrderListView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = OrderSerializer
+    lookup_url_kwarg = 'id'
 
     def get_queryset(self):
         user = self.request.user
@@ -24,6 +25,13 @@ class FarmerOrderListView(generics.RetrieveUpdateDestroyAPIView):
         return queryset
 
 
+#
+# class OrderListView(generics.RetrieveUpdateDestroyAPIView):
+#     serializer_class = OrderSerializer
+#     queryset = Order.objects.all()
+
+
 class OrderListView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = OrderSerializer
+    lookup_url_kwarg = 'id'
     queryset = Order.objects.all()
